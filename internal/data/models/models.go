@@ -12,6 +12,14 @@ type Message struct{
 	*gomail.Message
 }
 
+type Msg struct{
+	From string
+	To string
+	CC []string
+	Subject string
+	Body string
+}
+
 func NewMessage(from, to string, addressHeader []string, subject string, body string) *Message {
 	m := gomail.NewMessage()
 	m.SetHeader("From", from)

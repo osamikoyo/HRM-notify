@@ -10,6 +10,7 @@ type Smpt struct{
 }
 
 type Config struct{
+    RabbitMQ string `mapstructure:"RABBITMQ_URL"`
 	Port string `mapstructure:"PORT"`
 	Host string `mapstructure:"HOST"`
     Smpt Smpt
