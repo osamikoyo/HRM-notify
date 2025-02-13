@@ -1,7 +1,6 @@
 package server
 
 import (
-	"sync"
 
 	"github.com/osamikoyo/hrm-notify/internal/reciewer"
 	"github.com/osamikoyo/hrm-notify/pkg/config"
@@ -33,15 +32,5 @@ func New() (*Server, error) {
 func (s *Server) Run() {
 	s.Logger.Info().Msg("Starting service")
 
-	var wg *sync.WaitGroup
-	wg.Add(1)
-
-
-	go func() {
-		for {
-			s.Reciewer.WaitMessages()
-		}
-	}()
-
-	wg.Wait()
+	s.Reciewer.WaitMessages()
 }
